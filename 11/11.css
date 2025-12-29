@@ -1,0 +1,198 @@
+/* Modern / Clean — Light Theme (ONE long card)
+   Google Fonts: Plus Jakarta Sans + DM Serif Display
+   Add this inside <head> above your CSS link:
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+*/
+
+:root{
+  /* Fonts (students can change these easily) */
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-title: "DM Serif Display", Georgia, serif;
+
+  /* Background */
+  --bg: #e4f4fc;
+  --bg2: #f2f9fd;
+  --panel: rgba(255,255,255,0.92);
+  --panel2: rgba(255,255,255,0.88);
+
+  /* Text */
+  --ink: #0f2a3a;
+  --ink2:#234355;
+  --muted:#3a5b6d;
+
+  /* Accents */
+  --accent: #1376a7;
+  --accent2:#86be16;
+  --accent3:#e56322;
+
+  /* Layout */
+  --border: rgba(15,42,58,0.14);
+  --shadow: 0 18px 45px rgba(15,42,58,0.18);
+}
+
+* { box-sizing: border-box; }
+
+body{
+  margin: 0;
+  padding: 40px 18px 70px;
+  font-family: var(--font-body);
+  color: var(--ink);
+  position: relative;
+
+  background:
+    radial-gradient(
+      900px 520px at 15% 10%,
+      color-mix(in srgb, var(--accent) 12%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      800px 520px at 85% 18%,
+      color-mix(in srgb, var(--accent2) 10%, transparent),
+      transparent 60%
+    ),
+    linear-gradient(180deg, var(--bg), var(--bg2));
+}
+
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(15,42,58,0.05) 1px, transparent 1px) 0 0/48px 48px,
+    linear-gradient(90deg, rgba(15,42,58,0.04) 1px, transparent 1px) 0 0/48px 48px;
+  opacity: 0.25;
+}
+
+body::after{
+  content:"";
+  position: absolute;
+  left: 50%;
+  top: 22px;
+  bottom: 22px;
+  transform: translateX(-50%);
+  width: min(920px, 92vw);
+  z-index: -1;
+
+  background: linear-gradient(180deg, var(--panel), var(--panel2));
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+}
+
+h1, #subtitle, h2, h3, h4, h5, p, ul, ol, iframe{
+  width: min(860px, 88vw);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1{
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: clamp(2.1rem, 4.2vw, 3.1rem);
+  line-height: 1.05;
+  text-align: center;
+  margin: 12px auto 6px;
+  color: var(--ink);
+}
+
+#subtitle{
+  text-align: center;
+  font-weight: 700;
+  color: var(--ink2);
+  border-radius: 999px;
+  padding: 10px 14px;
+
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--accent) 14%, transparent),
+    color-mix(in srgb, var(--accent2) 12%, transparent)
+  );
+}
+
+h2{
+  font-weight: 800;
+  font-size: clamp(1.35rem, 2.7vw, 1.75rem);
+  margin: 26px auto 10px;
+  padding: 10px 2px 8px;
+  color: var(--ink);
+
+  border-bottom: 3px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  border-image: linear-gradient(90deg, var(--accent), var(--accent2)) 1;
+}
+
+h3{
+  font-weight: 800;
+  margin: 18px auto 8px;
+  font-size: 1.18rem;
+  color: var(--ink);
+}
+
+h4{
+  font-weight: 800;
+  margin: 14px auto 6px;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+h5{
+  font-weight: 800;
+  margin: 12px auto 6px;
+  font-size: 0.98rem;
+  color: var(--muted);
+}
+
+p{
+  margin: 0 auto 12px;
+  line-height: 1.75;
+  color: var(--ink2);
+}
+
+ul, ol{
+  margin: 0 auto 16px;
+  padding: 0 0 0 22px;
+  line-height: 1.75;
+  color: var(--ink2);
+}
+
+li{ margin: 6px 0; }
+
+ul li::marker{ color: var(--accent); }
+ol li::marker{ color: var(--accent3); font-weight: 800; }
+
+.game-wrapper{
+  width: 420px;
+  margin: 14px auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+iframe{
+  display: block;
+  margin: 0;
+  border-radius: 18px;
+  box-shadow: 0 16px 36px rgba(15,42,58,0.25);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  background: var(--panel);
+}
+
+a{
+  color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+a:hover{
+  color: color-mix(in srgb, var(--accent3) 80%, var(--accent));
+}
+
+@media (max-width: 520px){
+  body{ padding-top: 26px; }
+  ul, ol{ padding-left: 22px; }
+  body::after{
+    top: 14px;
+    height: calc(100% - 28px);
+  }
+}

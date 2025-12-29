@@ -1,0 +1,187 @@
+/* Option A: Futuristic / Tech-y 
+   Google Fonts: Orbitron + Inter
+   Put this in <head> ABOVE your CSS link (students can swap the families/weights):
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+*/
+
+/* Students edit ONLY these variables */
+:root{
+  /* Fonts */
+  --font-body: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-title: "Orbitron", system-ui, sans-serif;
+
+  /* Colors */
+  --bg: #070A12;
+  --bg-top: #050710;
+
+  --panel: rgba(255, 255, 255, 0.06);
+  --text: #EAF2FF;
+  --muted: rgba(234, 242, 255, 0.75);
+
+  --accent: #00E5FF;
+  --accent2: #B400FF;
+
+  --border: rgba(234, 242, 255, 0.14);
+  --shadow: 0 16px 40px rgba(0,0,0,0.45);
+
+  /* Derived / helper colors (so nothing is hard-coded later) */
+  --glow-accent: color-mix(in srgb, var(--accent) 18%, transparent);
+  --glow-accent2: color-mix(in srgb, var(--accent2) 16%, transparent);
+  --stripe: rgba(255,255,255,0.06);
+  --stripe-opacity: 0.10;
+
+  --h2-grad-a: color-mix(in srgb, var(--accent) 14%, transparent);
+  --h2-grad-b: color-mix(in srgb, var(--accent2) 10%, transparent);
+
+  --iframe-shadow: 0 18px 50px rgba(0,0,0,0.55);
+  --iframe-outline: color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+* { box-sizing: border-box; }
+
+body{
+  margin: 0;
+  padding: 40px 18px 70px;
+  font-family: var(--font-body);
+  color: var(--text);
+  background:
+    radial-gradient(900px 500px at 15% 10%, var(--glow-accent), transparent 55%),
+    radial-gradient(900px 500px at 85% 20%, var(--glow-accent2), transparent 60%),
+    linear-gradient(180deg, var(--bg-top), var(--bg));
+}
+
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--stripe) 0px,
+      var(--stripe) 1px,
+      transparent 1px,
+      transparent 22px
+    );
+  opacity: var(--stripe-opacity);
+}
+
+/* Centered "card" layout without needing extra HTML wrappers */
+h1, #subtitle, h2, h3, h4, h5, p, ul, ol, iframe{
+  width: min(900px, 92vw);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1{
+  font-family: var(--font-title);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-shadow: 0 0 18px var(--glow-accent);
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* Subtitle */
+#subtitle{
+  padding: 10px 14px;
+  color: var(--muted);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Headings */
+h2{
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2.6vw, 1.65rem);
+  margin: 30px auto 10px;
+  padding: 14px 16px;
+  background: linear-gradient(90deg, var(--h2-grad-a), var(--h2-grad-b));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+h3{
+  font-family: var(--font-title);
+  font-weight: 700;
+  margin: 18px auto 8px;
+  font-size: 1.15rem;
+  color: var(--text);
+}
+
+h4{
+  font-weight: 800;
+  margin: 14px auto 6px;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+h5{
+  font-weight: 800;
+  margin: 12px auto 6px;
+  font-size: 0.98rem;
+  color: var(--muted);
+}
+
+/* Paragraphs */
+p{
+  margin: 0 auto 12px;
+  padding: 14px 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+/* Lists */
+ul, ol{
+  margin: 0 auto 16px;
+  padding: 14px 18px 14px 40px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+li{
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+ul li::marker{ color: var(--accent); }
+ol li::marker{ color: var(--accent2); font-weight: 800; }
+
+/* Game embed */
+iframe{
+  display: block;
+  margin: 14px auto 0;
+  border-radius: 18px;
+  box-shadow: var(--iframe-shadow);
+  outline: 1px solid var(--iframe-outline);
+}
+
+.game-wrapper{
+  width: 420px;
+  margin: 14px auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Small screens */
+@media (max-width: 520px){
+  body{ padding-top: 26px; }
+  ul, ol{ padding-left: 34px; }
+}

@@ -1,0 +1,303 @@
+/* Modern / Clean — Light Theme (ONE long card)
+   Google Fonts: Plus Jakarta Sans + DM Serif Display
+   Add this inside <head> above your CSS link:
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+*/
+
+/* You can edit colors here: */
+:root{
+  /* Background */
+  --bg: #e4f4fc;                 /* very light blue  */
+  --panel: rgba(255,255,255,0.92);
+  --panel2: rgba(255,255,255,0.88);
+
+  /* Text (dark, high contrast) */
+  --ink: #0f2a3a;                /* primary text */
+  --ink2:#234355;                /* secondary text */
+  --muted:#3a5b6d;
+
+  /* Accents (set to obvious RGB so changes are clear) */
+  --accent: #ec5a73;                 /* primary accent */
+  --accent2: #ec5abc;              /* secondary accent */
+  --accent3: #9c71ef;               /* highlight accent */
+
+  /* Layout */
+  --border: rgba(15,42,58,0.14);
+  --shadow: 0 18px 45px rgba(15,42,58,0.18);
+}
+
+* { box-sizing: border-box; }
+
+body{
+  margin: 0;
+  padding: 40px 18px 70px;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--ink);
+  position: relative;
+
+ background:
+  radial-gradient(
+    900px 520px at 15% 10%,
+    color-mix(in srgb, var(--accent) 12%, transparent),
+    transparent 60%
+  ),
+  radial-gradient(
+    800px 520px at 85% 18%,
+    color-mix(in srgb, var(--accent2) 10%, transparent),
+    transparent 60%
+  ),
+  linear-gradient(180deg, var(--bg), #f2f9fd);
+
+}
+
+/* Subtle grid texture (very light) */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(15,42,58,0.05) 1px, transparent 1px) 0 0/48px 48px,
+    linear-gradient(90deg, rgba(15,42,58,0.04) 1px, transparent 1px) 0 0/48px 48px;
+  opacity: 0.25;
+}
+
+/* ONE long rectangle container */
+body::after{
+  content:"";
+  position: absolute;
+  left: 50%;
+  top: 22px;
+  bottom: 22px;
+  transform: translateX(-50%);
+  width: min(920px, 92vw);
+  z-index: -1;
+
+  background: linear-gradient(180deg, var(--panel), var(--panel2));
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+}
+
+/* Keep everything aligned inside the one long rectangle */
+h1, #subtitle, h2, h3, h4, h5, p, ul, ol, iframe, nav{
+  width: min(860px, 88vw);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Headings */
+h1{
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2.1rem, 4.2vw, 3.1rem);
+  line-height: 1.05;
+  text-align: center;
+  margin: 12px auto 6px;
+  color: var(--ink);
+}
+
+#subtitle{
+  text-align: center;
+  font-weight: 700;
+  color: var(--ink2);
+  border-radius: 999px;
+  padding: 10px 14px;
+
+  /* NOW uses accent variables */
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--accent) 14%, transparent),
+    color-mix(in srgb, var(--accent2) 12%, transparent)
+  );
+}
+
+/* Section headings */
+h2{
+  font-weight: 800;
+  font-size: clamp(1.35rem, 2.7vw, 1.75rem);
+  margin: 26px auto 10px;
+  padding: 10px 2px 8px;
+  color: var(--ink);
+
+  /* CHANGED bottom border to obvious red */
+  border-bottom: 3px solid rgba(255,0,0,0.45);
+
+  border-image: linear-gradient(
+    90deg,
+    var(--accent),
+    var(--accent2)
+  ) 1;
+}
+
+h3{
+  font-weight: 800;
+  margin: 18px auto 8px;
+  font-size: 1.18rem;
+  color: var(--ink);
+}
+
+h4{
+  font-weight: 800;
+  margin: 14px auto 6px;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+h5{
+  font-weight: 800;
+  margin: 12px auto 6px;
+  font-size: 0.98rem;
+  color: var(--muted);
+}
+
+/* Paragraphs */
+p{
+  margin: 0 auto 12px;
+  line-height: 1.75;
+  color: var(--ink2);
+}
+
+/* Lists */
+ul, ol{
+  margin: 0 auto 16px;
+  padding: 0 0 0 22px;
+  line-height: 1.75;
+  color: var(--ink2);
+}
+
+li{ margin: 6px 0; }
+
+ul li::marker{ color: var(--accent); }
+ol li::marker{ color: var(--accent3); font-weight: 800; }
+
+/* Links */
+a{
+  color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+a:hover{ color: blue; } /* CHANGED to obvious blue */
+
+/* Footer */
+footer{
+  text-align: center;
+  padding-top: 10px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* ---------- STUDENT BUTTONS (modern + clean) ---------- */
+nav[aria-label="Student website links"]{
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--panel) 60%, transparent);
+
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+}
+
+nav[aria-label="Student website links"] a{
+  display: block;
+  text-decoration: none;
+}
+
+nav[aria-label="Student website links"] button{
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+
+  /* uses primary accent */
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+
+  background: linear-gradient(
+    180deg,
+    var(--panel),
+    color-mix(in srgb, var(--panel) 82%, transparent)
+  );
+  color: var(--ink);
+  border-radius: var(--radius-sm);
+  padding: 12px 10px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+
+  box-shadow: 0 10px 18px color-mix(in srgb, var(--ink) 10%, transparent);
+  transition:
+    transform 140ms ease,
+    box-shadow 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease;
+}
+
+/* nice “sheen” */
+nav[aria-label="Student website links"] button{
+  position: relative;
+  overflow: hidden;
+}
+nav[aria-label="Student website links"] button::before{
+  content:"";
+  position: absolute;
+  inset: 0;
+
+  /* uses primary + secondary accents */
+  background:
+    radial-gradient(
+      240px 120px at 20% 20%,
+      color-mix(in srgb, var(--accent) 14%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      240px 120px at 80% 20%,
+      color-mix(in srgb, var(--accent2) 12%, transparent),
+      transparent 60%
+    );
+  pointer-events: none;
+}
+nav[aria-label="Student website links"] button > *{
+  position: relative;
+  z-index: 1;
+}
+
+nav[aria-label="Student website links"] button:hover{
+  transform: translateY(-2px);
+
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+
+  box-shadow: 0 14px 26px color-mix(in srgb, var(--ink) 16%, transparent);
+
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent) 8%, var(--panel)),
+    color-mix(in srgb, var(--panel) 92%, transparent)
+  );
+}
+
+nav[aria-label="Student website links"] button:active{
+  transform: translateY(0px);
+  box-shadow: 0 10px 18px color-mix(in srgb, var(--ink) 10%, transparent);
+}
+
+/* Keyboard focus (accessibility) */
+nav[aria-label="Student website links"] a:focus-visible button,
+nav[aria-label="Student website links"] button:focus-visible{
+  outline: 3px solid color-mix(in srgb, var(--accent3) 32%, transparent);
+  outline-offset: 2px;
+  border-color: color-mix(in srgb, var(--accent3) 75%, transparent);
+}
+
+/* Small screens */
+@media (max-width: 520px){
+  body{ padding-top: 26px; }
+  ul, ol{ padding-left: 22px; }
+  body::after{
+    top: 14px;
+    height: calc(100% - 28px);
+  }
+}
