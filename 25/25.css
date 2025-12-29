@@ -1,0 +1,232 @@
+/* Colorful Retro Theme
+   Google Fonts: Fredoka + Nunito
+   Put this in <head> ABOVE your CSS link (students can swap the families/weights):
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+*/
+
+/* Students edit ONLY these variables */
+:root{
+  /* Fonts */
+  --font-body: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-title: "Fredoka", system-ui, sans-serif;
+
+  /* Palette (given) */
+  --pink: orange;
+  --blue: green;
+  --rose: yellow;
+  --cream: #f4dbd6;
+
+  /* Text colors */
+  --ink: #1a1333;
+  --ink2: #2a1d4a;
+  --white: #ffffff;
+
+  /* Layout */
+  --border: rgba(26, 19, 51, 0.18);
+  --shadow: 0 18px 50px rgba(26, 19, 51, 0.18);
+
+  /* Derived / helper colors (so nothing is hard-coded later) */
+  --bg-pink-glow: color-mix(in srgb, var(--pink) 28%, transparent);
+  --bg-blue-glow: color-mix(in srgb, var(--blue) 28%, transparent);
+
+  --dot-blue: color-mix(in srgb, var(--blue) 14%, transparent);
+  --dot-pink: color-mix(in srgb, var(--pink) 12%, transparent);
+
+  --panel-top: color-mix(in srgb, var(--white) 92%, transparent);
+  --panel-bot: color-mix(in srgb, var(--cream) 86%, transparent);
+
+  --title-highlight: color-mix(in srgb, var(--white) 85%, transparent);
+
+  --subtitle-border: color-mix(in srgb, var(--ink) 22%, transparent);
+  --subtitle-grad-a: color-mix(in srgb, var(--pink) 22%, transparent);
+  --subtitle-grad-b: color-mix(in srgb, var(--blue) 22%, transparent);
+
+  --h2-underline: color-mix(in srgb, var(--blue) 35%, transparent);
+  --h2-grad-a: color-mix(in srgb, var(--pink) 65%, transparent);
+  --h2-grad-b: color-mix(in srgb, var(--blue) 65%, transparent);
+
+  --h5: color-mix(in srgb, var(--ink) 78%, transparent);
+
+  --iframe-shadow: 0 18px 40px color-mix(in srgb, var(--ink) 22%, transparent);
+  --iframe-border: color-mix(in srgb, var(--blue) 35%, transparent);
+  --iframe-bg: color-mix(in srgb, var(--white) 60%, transparent);
+
+  --link: color-mix(in srgb, var(--ink2) 70%, var(--blue));
+  --link-hover: color-mix(in srgb, var(--ink) 80%, var(--blue));
+}
+
+* { box-sizing: border-box; }
+
+body{
+  margin: 0;
+  padding: 40px 18px 70px;
+  font-family: var(--font-body);
+  color: var(--ink);
+  position: relative;
+
+  background:
+    radial-gradient(700px 450px at 15% 10%, var(--bg-pink-glow), transparent 60%),
+    radial-gradient(750px 500px at 85% 20%, var(--bg-blue-glow), transparent 60%),
+    linear-gradient(180deg, var(--cream), var(--rose));
+}
+
+/* Subtle retro pattern overlay */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, var(--dot-blue) 2px, transparent 3px) 0 0/42px 42px,
+    radial-gradient(circle, var(--dot-pink) 2px, transparent 3px) 21px 21px/42px 42px;
+  opacity: 0.55;
+}
+
+/* ONE long rectangle container */
+body::after{
+  content:"";
+  position: absolute;
+  left: 50%;
+  top: 22px;
+  bottom: 22px;
+  transform: translateX(-50%);
+  width: min(920px, 92vw);
+  z-index: -1;
+
+  background: linear-gradient(180deg, var(--panel-top), var(--panel-bot));
+  border: 2px solid var(--border);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+}
+
+/* Keep everything aligned inside the one long rectangle */
+h1, #subtitle, h2, h3, h4, h5, p, ul, ol, iframe, img{
+  width: min(860px, 88vw);
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+}
+/* Headings */
+h1{
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 4.2vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-align: center;
+  margin: 12px auto 6px;
+
+  color: var(--ink);
+  text-shadow: 0 2px 0 var(--title-highlight);
+}
+
+#subtitle{
+  text-align: center;
+  font-weight: 900;
+  color: var(--ink2);
+  border-radius: 999px;
+
+  border: 2px dashed var(--subtitle-border);
+  background: linear-gradient(90deg, var(--subtitle-grad-a), var(--subtitle-grad-b));
+}
+
+/* Section headings (no individual boxes) */
+h2{
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: clamp(1.35rem, 2.7vw, 1.7rem);
+  margin: 26px auto 10px;
+  padding: 8px 2px;
+
+  color: var(--ink);
+  border-bottom: 6px solid var(--h2-underline);
+  border-image: linear-gradient(90deg, var(--h2-grad-a), var(--h2-grad-b)) 1;
+}
+
+h3{
+  font-family: var(--font-title);
+  font-weight: 700;
+  margin: 18px auto 8px;
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+
+h4{
+  font-weight: 900;
+  margin: 14px auto 6px;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+h5{
+  font-weight: 900;
+  margin: 12px auto 6px;
+  font-size: 0.98rem;
+  color: var(--h5);
+}
+
+/* Paragraphs (no separate rectangles) */
+p{
+  margin: 0 auto 12px;
+  padding: 0;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+/* Lists (no separate rectangles) */
+ul, ol{
+  margin: 0 auto 16px;
+  padding: 0 0 0 22px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+li{ margin: 6px 0; }
+
+ul li::marker{ color: var(--pink); }
+ol li::marker{ color: var(--blue); font-weight: 900; }
+
+/* Game wrapper */
+.game-wrapper{
+  width: 420px;
+  margin: 14px auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Game embed */
+iframe{
+  display: block;
+  margin: 0;
+  border-radius: 18px;
+  box-shadow: var(--iframe-shadow);
+  border: 3px solid var(--iframe-border);
+  background: var(--iframe-bg);
+}
+
+/* Links */
+a{
+  color: var(--link);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+a:hover{
+  color: var(--link-hover);
+}
+
+/* Small screens */
+@media (max-width: 520px){
+  body{ padding-top: 26px; }
+  ul, ol{ padding-left: 22px; }
+  body::after{
+    top: 14px;
+    height: calc(100% - 28px);
+  }
+}
